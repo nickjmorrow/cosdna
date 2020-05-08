@@ -16,11 +16,11 @@ export const Typography: React.FC<{
     );
 };
 
-type FontFamilyVariant = 'title' | 'default';
+type FontFamilyVariant = 'title' | 'default' | 'inherit';
 
 type TypographyVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body';
 
-type ColorVariant = 'primaryDark' | 'secondaryDark';
+type ColorVariant = 'primaryDark' | 'secondaryDark' | 'inherit';
 
 const getFontFamily = (fontFamilyVariant: FontFamilyVariant) => {
     switch (fontFamilyVariant) {
@@ -39,6 +39,8 @@ const getColor = (colorVariant: ColorVariant) => {
             return styleSystem.color.neutral.cs9;
         case 'secondaryDark':
             return styleSystem.color.neutral.cs7;
+        case 'inherit':
+            return 'inherit';
     }
 };
 
