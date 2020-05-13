@@ -22,29 +22,24 @@ export class ProductsController {
     ) {}
 
     @Get()
-    getAll(): Promise<Product[]> {
-        return this.productProvider.getProducts();
+    getAllProducts(): Promise<Product[]> {
+        return this.productProvider.getAllProducts();
     }
 
-    @Get(':id')
-    findOne(@Param() params): Product {
-        console.log(params.id);
-        return {
-            productId: params.id,
-            name: 'some product test',
-        };
+    @Get(':productId')
+    getOneProduct(@Param() params): Promise<Product> {
+        return this.productProvider.getOneProduct(params.productId);
     }
 
     @Post()
-    create(@Body() body: Body) {
+    createProduct(@Body() body: Body) {
         return this.productCreator.createProduct(
             (body as unknown) as CreateProductModel,
         );
     }
 
     @Delete()
-    remove(@Query() params) {
-        console.log(params);
+    removeProduct(@Query() params) {
         return this.productRemover.removeProduct({
             productId: params.productId,
         });
