@@ -26,6 +26,6 @@
             "~/*": ["./src/*"]
         }
     },
-    "include": ["src"],
-    "exclude": ["node_modules", "**/*.spec.ts"]
+    "include": ["src", "../server/src/products/remove-product.dto.ts"],
+    "exclude": ["node_modules", "**/*.spec.ts", "dist"]
 }

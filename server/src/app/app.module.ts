@@ -16,7 +16,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
             port: 5432,
             entities: [Product],
             url: process.env.DATABASE_URL,
-            synchronize: true,
         }),
     ],
     controllers: [AppController],
