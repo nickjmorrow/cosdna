@@ -1,20 +1,19 @@
 import { Module } from '@nestjs/common';
 import { AppController } from '@src/app/app.controller';
 import { AppService } from '@src/app/app.service';
-import { UsersModule } from '@src/users/users.module';
 import { ProductsModule, Product } from '@src/products';
-import { RecommendationsModule } from '@src/recommendations/recommendations.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { IngredientsModule } from '@src/ingredients/ingredients.module';
+import { Ingredient } from '@src/ingredients';
 
 @Module({
     imports: [
-        UsersModule,
         ProductsModule,
-        RecommendationsModule,
+        IngredientsModule,
         TypeOrmModule.forRoot({
             type: 'postgres',
             port: 5432,
-            entities: [Product],
+            entities: [Product, Ingredient],
             url: process.env.DATABASE_URL,
         }),
     ],
