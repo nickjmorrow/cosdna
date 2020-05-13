@@ -23,3 +23,7 @@
 - dedicated page for product creation
 - makes it easy to associate/create-if-not-exists ingredients
 - if no products/ingredients returned from search, make it obvious how to create an entry
+
+### I want to be able to view ingredients and products based off desired outcome
+
+- E.g. ingredients should be associated with some use, like "lightening", and if I say I want lightening, I should be able to view a list of ingredients or products associated with that use
