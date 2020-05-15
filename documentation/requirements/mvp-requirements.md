@@ -27,3 +27,5 @@
 ### I want to be able to view ingredients and products based off desired outcome
 
 - E.g. ingredients should be associated with some use, like "lightening", and if I say I want lightening, I should be able to view a list of ingredients or products associated with that use
+
+### I want to be recommmended products and ingredients that are likely to work for me based off other products and ingredients I have marked as having worked for me
