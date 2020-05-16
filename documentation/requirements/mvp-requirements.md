@@ -27,3 +27,5 @@
 ### I want to be able to view ingredients and products based off desired outcome
 
 - E.g. ingredients should be associated with some use, like "lightening", and if I say I want lightening, I should be able to view a list of ingredients or products associated with that use
+
+### I want the site to be seeded with popular products so that I don't need to add my entire routine
