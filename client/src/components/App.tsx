@@ -1,6 +1,6 @@
 import axios from 'axios';
 import 'normalize.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
@@ -15,7 +15,10 @@ axios.defaults.baseURL = getBaseUrl();
 
 function App() {
     const dispatch = useDispatch();
-    dispatch(productsActions.getProducts.request());
+    useEffect(() => {
+        dispatch(productsActions.getProducts.request());
+    }, []);
+
     return (
         <ThemeContext.Provider value={styleSystem}>
             <Layout>

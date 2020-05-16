@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Typography } from '~/core/Typography';
-import { SiteTitle } from '~/core/SiteTitle';
-import { navMenuRoutes } from '~/core/componentRoutes';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { navMenuRoutes } from '~/core/componentRoutes';
+import { SiteTitle } from '~/core/SiteTitle';
+import { Typography } from '~/core/Typography';
 
 export const NavMenu: React.FC = () => {
     return (
@@ -15,7 +15,7 @@ export const NavMenu: React.FC = () => {
                 {navMenuRoutes
                     .filter(cr => cr.showInNav)
                     .map(cr => (
-                        <Link to={cr.route} style={{ textDecoration: 'none' }}>
+                        <Link to={`/${cr.route}`} style={{ textDecoration: 'none' }}>
                             <NavItem>
                                 <Typography>{cr.label}</Typography>
                             </NavItem>

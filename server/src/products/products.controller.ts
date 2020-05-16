@@ -26,8 +26,9 @@ export class ProductsController {
         return this.productProvider.getAllProducts();
     }
 
-    @Get(':productId')
+    @Get(':url')
     getOneProduct(@Param() params): Promise<Product> {
+        console.log(params);
         return this.productProvider.getOneProduct(params.url);
     }
 
