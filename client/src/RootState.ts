@@ -1,7 +1,7 @@
-import { StateType } from 'typesafe-actions';
-import { rootReducer } from './rootReducer';
 import { TodosState } from './todos/TodosState';
+import { ProductsState } from '~/products/types/ProductsState';
 
 export interface RootState {
-    todosState: TodosState;
+    todos: TodosState;
+    products: ProductsState;
 }

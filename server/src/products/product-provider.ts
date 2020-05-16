@@ -11,10 +11,10 @@ export class ProductProvider {
         });
     }
 
-    public getOneProduct(productId: number): Promise<Product> {
+    public getOneProduct(url: string): Promise<Product> {
         return this.connection.manager.findOneOrFail(
             Product,
-            { productId },
+            { url },
             { relations: ['ingredients'] },
         );
     }

@@ -28,7 +28,7 @@ export class ProductsController {
 
     @Get(':productId')
     getOneProduct(@Param() params): Promise<Product> {
-        return this.productProvider.getOneProduct(params.productId);
+        return this.productProvider.getOneProduct(params.url);
     }
 
     @Post()
@@ -40,6 +40,7 @@ export class ProductsController {
 
     @Delete()
     removeProduct(@Query() params) {
+        console.log(params);
         return this.productRemover.removeProduct({
             productId: params.productId,
         });

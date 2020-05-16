@@ -1,20 +1,33 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-// import { rootSaga } from './rootSaga';
-import { rootReducer } from './rootReducer';
-import { RootState } from './RootState';
-import { routerMiddleware } from 'react-router-redux';
+import { routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
+import { RootState } from '~/RootState';
+import { createRootReducer } from '~/createRootReducer';
+import { rootSaga } from '~/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
+export const history = createBrowserHistory({ basename: '/' });
 
-const configureStore = () => {
-    const middleware = [routerMiddleware(createBrowserHistory())];
+const configureStore = (initialState: RootState) => {
+    const middleware = [sagaMiddleware, routerMiddleware(history)];
 
-    const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
+    // In development, use the browser's Redux dev tools extension if installed
+    const enhancers = [];
+    const isDevelopment = process.env.NODE_ENV === 'development';
+    if (isDevelopment && typeof window !== 'undefined' && (window as any).__REDUX_DEVTOOLS_EXTENSION__) {
+        enhancers.push((window as any).__REDUX_DEVTOOLS_EXTENSION__());
+    }
 
-    return store;
+    const intermediateStore = createStore(
+        createRootReducer(history),
+        initialState,
+        compose(applyMiddleware(...middleware), ...enhancers),
+    );
+
+    sagaMiddleware.run(rootSaga);
+
+    return intermediateStore;
 };
 
-export const store = configureStore();
+export const store = configureStore((window as any).initialReduxState);

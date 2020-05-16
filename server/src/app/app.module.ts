@@ -1,17 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AppController } from '@src/app/app.controller';
 import { AppService } from '@src/app/app.service';
-import { ProductsModule, Product } from '@src/products';
+import { ProductsModule } from '@src/products';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { IngredientsModule } from '@src/ingredients/ingredients.module';
-import { Ingredient } from '@src/ingredients';
-import { ormConfig } from '@src/ormConfig';
+import * as ormconfig from '@src/ormconfig';
 
 @Module({
     imports: [
         ProductsModule,
         IngredientsModule,
-        TypeOrmModule.forRoot(ormConfig),
+        TypeOrmModule.forRoot(ormconfig),
     ],
     controllers: [AppController],
     providers: [AppService],

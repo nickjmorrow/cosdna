@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { CreateProductModel } from '@src/products/create-product.model';
 import { Ingredient } from '@src/ingredients/ingredients.entity';
+import cryptoRandomString from 'crypto-random-string';
 
 @Entity({ schema: 'ing', name: 'products' })
 export class Product {
@@ -15,6 +16,9 @@ export class Product {
 
     @Column({ name: 'name' })
     public name!: string;
+
+    @Column({ name: 'url' })
+    public url!: string;
 
     @ManyToMany(
         type => Ingredient,
@@ -27,9 +31,13 @@ export class Product {
     })
     public ingredients!: Ingredient[];
 
-    constructor(productDto: CreateProductModel) {
-        if (productDto) {
-            this.name = name;
+    constructor(createProductModel: CreateProductModel) {
+        if (createProductModel) {
+            this.name = createProductModel.name;
+            this.url = cryptoRandomString({
+                length: 12,
+                type: 'url-safe',
+            });
         }
     }
 }

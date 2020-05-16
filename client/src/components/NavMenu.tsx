@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Typography } from '~/core/Typography';
 import { SiteTitle } from '~/core/SiteTitle';
-import { componentRoutes } from '~/core/componentRoutes';
+import { navMenuRoutes } from '~/core/componentRoutes';
 import { Link } from 'react-router-dom';
 
 export const NavMenu: React.FC = () => {
@@ -12,7 +12,7 @@ export const NavMenu: React.FC = () => {
                 <SiteTitle />
             </SiteTitleContainer>
             <NavItemsContainer>
-                {componentRoutes
+                {navMenuRoutes
                     .filter(cr => cr.showInNav)
                     .map(cr => (
                         <Link to={cr.route} style={{ textDecoration: 'none' }}>
