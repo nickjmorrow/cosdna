@@ -29,6 +29,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -41,7 +42,7 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         liveReload: true,
-        port: 3000,
+        port: 8000,
         https: true,
         historyApiFallback: true,
         writeToDisk: true,

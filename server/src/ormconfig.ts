@@ -9,9 +9,13 @@ import { ConnectionOptions } from 'typeorm';
 // ...
 
 // Check typeORM documentation for more information.
-export const ormConfig: ConnectionOptions = {
+const ormconfig: ConnectionOptions = {
     type: 'postgres',
     url: 'postgres://devuser:pass@postgres:5432/postgres',
+    username: 'devuser',
+    password: 'pass',
+    database: 'postgres',
+    host: 'localhost',
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
 
     // We are using migrations, synchronize should be set to false.
@@ -33,3 +37,5 @@ export const ormConfig: ConnectionOptions = {
         migrationsDir: 'src/migrations',
     },
 };
+
+export = ormconfig;

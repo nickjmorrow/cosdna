@@ -1,18 +1,15 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import { Provider } from 'react-redux';
-
-import { store } from './store';
+import { store, history } from './store';
 import App from './components/App';
-import { BrowserRouter } from 'react-router-dom';
-
-const baseUrl = '';
+import { ConnectedRouter } from 'connected-react-router';
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter basename={baseUrl}>
+        <ConnectedRouter history={history}>
             <App />
-        </BrowserRouter>
+        </ConnectedRouter>
     </Provider>,
     document.querySelector('#container'),
 );
